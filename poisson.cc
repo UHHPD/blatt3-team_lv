@@ -3,16 +3,16 @@
 #include <vector>
 #include <cmath>
 
-double mu = 3.11538;
+double mu = 3.11538;  //Mittelwert aus Aufgabe 2, Blatt 2
 int N = 234;
 
-double poisson(double mu, int k) {
+double poisson(double mu, int k) {  //Funktion außerhalb des Hauptprogramms
 
-    double e_mu = exp(-mu);
-    double mu_k = pow(mu, k);
-    double k_f = tgamma(k+1);
-    double P = mu_k * e_mu * (1/(k_f));
-    return P;
+    double e_mu = exp(-mu); //Implementation der Exponentialfunktion
+    double mu_k = pow(mu, k); //Implementation für Potenz
+    double k_f = tgamma(k+1); //Implementation für Fakultät
+    double P = mu_k * e_mu * (1/(k_f)); //Poissonwahrscheinlichkeit
+    return P; //Ausgabewert der Funktion
 
 }
 
@@ -33,15 +33,15 @@ int main() {
 
     for(int j=0;j<11;++j) { //Vorschleife starten, die die nächsten Befehle 11 mal ausführt
         cout << zaehler [j] << endl;  //Vektoreintrag an j'ter Stelle ausgeben
-        double P = poisson(mu, j)*N;
+        double E = poisson(mu, j)*N;
         fout <<j; //j in Ausgabedatei schreiben
         fout <<" "; //leere Spalte in Ausgabedatei schreiben
         fout <<zaehler [j]<< endl;  //Vektoreintrag an j'ter Stelle in Ausgabedatei schreiben
-        fout2 <<j; 
-        fout2 <<" "; 
-        fout2 <<zaehler [j];  
-        fout2 <<" ";
-        fout2 <<P<< endl;
+        fout2 <<j;  //j in 2.Ausgabedatei schreiben
+        fout2 <<" ";  //leere Spalte in 2. Ausgabedatei schreiben
+        fout2 <<zaehler [j];  //Vektoreintrag an j'ter Stelle in 2. Ausgabedatei schreiben
+        fout2 <<" ";  //leere Spalte in 2. Ausgabedatei schreiben
+        fout2 <<E<< endl; //Erwartung aus der Poissonverteilung in 2. Ausgabedatei schreiben
 
     }
 
