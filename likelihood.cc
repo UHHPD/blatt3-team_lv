@@ -54,7 +54,7 @@ int main() {  //Hauptprogramm starten
         
             mu+=0.1;  //Schrittweite von mu festlegen
             fout << mu << " " << prob(daten,mu) << endl;  //Wertepaare mu und L(mu) in Ausgabedatei schreiben
-            fout2 << mu << " " << -2*log(prob(daten,mu)) << endl; //Wertepaare mu und -2ln L(mu)
+            fout2 << mu << " " << -2*log(prob(daten,mu)) << endl; //Wertepaare mu und -2ln L(mu) in Ausgabedatei 2 schreiben
 
         } while(mu<6);  //Bedingung festlegen, die zum ausführen der obigen Befehle erfüllt sein muss
     
