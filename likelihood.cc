@@ -72,11 +72,12 @@ int main() {  //Hauptprogramm starten
         double j=0; //Variable festlegen
         
         do{ //nachfolgende Befehle ausführen, so lange Bedingung erfüllt ist
-        
-            j+=0.1;  //Schrittweite von mu festlegen
+
+            j+=0.1;  //Schrittweite von j festlegen
             fout << j << " " << prob(daten,j) << endl;  //Wertepaare mu und L(mu) in Ausgabedatei schreiben
             fout2 << j << " " << -2*log(prob(daten,j)) << endl; //Wertepaare mu und -2ln L(mu) in Ausgabedatei 2 schreiben
             fout3 << j << " " << -2*log(prob(daten,mu))+2*log(prob(daten,j)) << endl; //Wertepaare mu und -2ln L(mu)-2ln L(3,11538)
+
 
         } while(j<6);  //Bedingung festlegen, die zum ausführen der obigen Befehle erfüllt sein muss
 
@@ -92,4 +93,3 @@ int main() {  //Hauptprogramm starten
     fout3.close();  //Ausgabedatei 3 schließen
 
 } //Hauptprogramm beenden
-
