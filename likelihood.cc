@@ -27,7 +27,6 @@ double prob(vector<int> daten, double mu) { //Funktion außerhalb des Hauptprogr
 } //Funktion außerhalb des Hauptprogramms beenden
 
 
-double n_dof = 233;
 
 double pr(vector<int> daten) { //Funktion außerhalb des Hauptprogramms starten
 
@@ -81,10 +80,10 @@ int main() {  //Hauptprogramm starten
 
         } while(j<6);  //Bedingung festlegen, die zum ausführen der obigen Befehle erfüllt sein muss
 
-        double V = -2*log(prob(daten,mu)/pr(daten));  //Berechnung des Likelihood-Quotienten
-        cout << V << endl;  //Ausgabe des Likelihood-Quotienten im Terminal
+        double lambda = -2*log(prob(daten,mu)/pr(daten));  //Berechnung des Likelihood-Quotienten
+        cout << lambda << endl;  //Ausgabe des Likelihood-Quotienten im Terminal
 
-        double z = (V-n_dof)/(sqrt(2*n_dof)); //Berechnung der relativen Abweichung des Likelihood-Quotienten vom Mittelwert
+        double z = (lambda-233)/(sqrt(2*233)); //Berechnung der relativen Abweichung des Likelihood-Quotienten vom Mittelwert
         cout << z << endl;  //Ausgabe der relativen Abweichung des Likelihood-Quotienten vom Mittelwert
     
     fin.close();  //Einlesedatei schließen
