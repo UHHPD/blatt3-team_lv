@@ -69,22 +69,22 @@ int main() {  //Hauptprogramm starten
         cout << prob(daten , mu) << endl; //Likelihood für mu im Terminal ausgeben
 
 
-        mu=0; //Variable zurücksetzen
+        double j=0; //Variable festlegen
         
         do{ //nachfolgende Befehle ausführen, so lange Bedingung erfüllt ist
         
-            mu+=0.1;  //Schrittweite von mu festlegen
-            fout << mu << " " << prob(daten,mu) << endl;  //Wertepaare mu und L(mu) in Ausgabedatei schreiben
-            fout2 << mu << " " << -2*log(prob(daten,mu)) << endl; //Wertepaare mu und -2ln L(mu) in Ausgabedatei 2 schreiben
-            fout3 << mu << " " << -2*log(prob(daten,mu))+2*log(prob(daten,mu)) << endl; //Wertepaarre mu und -2ln L(mu)-2ln L(3,11538)
+            j+=0.1;  //Schrittweite von mu festlegen
+            fout << j << " " << prob(daten,j) << endl;  //Wertepaare mu und L(mu) in Ausgabedatei schreiben
+            fout2 << j << " " << -2*log(prob(daten,j)) << endl; //Wertepaare mu und -2ln L(mu) in Ausgabedatei 2 schreiben
+            fout3 << j << " " << -2*log(prob(daten,mu))+2*log(prob(daten,j)) << endl; //Wertepaare mu und -2ln L(mu)-2ln L(3,11538)
 
-        } while(mu<6);  //Bedingung festlegen, die zum ausführen der obigen Befehle erfüllt sein muss
+        } while(j<6);  //Bedingung festlegen, die zum ausführen der obigen Befehle erfüllt sein muss
 
         double V = -2*log(prob(daten,mu)/pr(daten));  //Berechnung des Likelihood-Quotienten
         cout << V << endl;  //Ausgabe des Likelihood-Quotienten im Terminal
 
-        double r = (V-n_dof)/(sqrt(2*n_dof)); //Berechnung der relativen Abweichung des Likelihood-Quotienten vom Mittelwert
-        cout << r << endl;  //Ausgabe der relativen Abweichung des Likelihood-Quotienten vom Mittelwert
+        double z = (V-n_dof)/(sqrt(2*n_dof)); //Berechnung der relativen Abweichung des Likelihood-Quotienten vom Mittelwert
+        cout << z << endl;  //Ausgabe der relativen Abweichung des Likelihood-Quotienten vom Mittelwert
     
     fin.close();  //Einlesedatei schließen
     fout.close(); //Ausgabedatei schließen
