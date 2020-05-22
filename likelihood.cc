@@ -27,6 +27,26 @@ double prob(vector<int> daten, double mu) { //Funktion außerhalb des Hauptprogr
 } //Funktion außerhalb des Hauptprogramms beenden
 
 
+double n_dof = 233;
+
+double pr(vector<int> daten) { //Funktion außerhalb des Hauptprogramms starten
+
+    double L = 1; //Variable definieren
+
+    for (int k : daten){  //Vorschleife starten, die die nächsten Befehle mit allen Einträgen aus dem Vektor daten je einmal ausführt 
+
+        double k_k = pow(k, k); //Implementation für Potenz
+        double k_f = tgamma(k+1); //Implementation für Fakultät
+        double e_k = exp(-k); //Implementation der Exponentialfunktion
+        L *= k_k*e_k*(1/(k_f)); //Likelihood geteilt durch bestmögliche Poissonwahrscheinlichkeit (mu=n_i)
+
+    } //Vorschleife beenden
+
+  return L; //Variable zurücksetzen
+
+} //Funktion außerhalb des Hauptprogramms beenden
+
+
 
 int main() {  //Hauptprogramm starten
 
@@ -59,6 +79,12 @@ int main() {  //Hauptprogramm starten
             fout3 << mu << " " << -2*log(prob(daten,mu))+2*log(prob(daten,mu)) << endl; //Wertepaarre mu und -2ln L(mu)-2ln L(3,11538)
 
         } while(mu<6);  //Bedingung festlegen, die zum ausführen der obigen Befehle erfüllt sein muss
+
+        double V = -2*log(prob(daten,mu)/pr(daten));  //Berechnung des Likelihood-Quotienten
+        cout << V << endl;  //Ausgabe des Likelihood-Quotienten im Terminal
+
+        double r = (V-n_dof)/(sqrt(2*n_dof)); //Berechnung der relativen Abweichung des Likelihood-Quotienten vom Mittelwert
+        cout << r << endl;  //Ausgabe der relativen Abweichung des Likelihood-Quotienten vom Mittelwert
     
     fin.close();  //Einlesedatei schließen
     fout.close(); //Ausgabedatei schließen
