@@ -32,21 +32,32 @@ int main() {  //Hauptprogramm starten
 
     
     ifstream fin("datensumme.txt"); //Einlesedatei festlegen
+    ofstream fout("likelihood.txt");  //Ausgabedatei festlegen
 
-    vector<int> daten(0); //Vektor mit 0 Einträgen defineiren
-    int n_i;  //Variable definieren
+        vector<int> daten(0); //Vektor mit 0 Einträgen defineiren
+        int n_i;  //Variable definieren
 
-    for(int i = 0 ; i < 234 ; ++i) {  //Vorschleife starten, die folgenden Befehle 234 mal ausführt
+        for(int i = 0 ; i < 234 ; ++i) {  //Vorschleife starten, die folgenden Befehle 234 mal ausführt
 
-        fin >> n_i; //aus Einlesedatei einlesen und den aktuell eingelesenen Wert nach n_i speichern
-        daten.push_back(n_i); //den aktuell in n_i gespeicherten Wert dem Vektor hinzufügen
+            fin >> n_i; //aus Einlesedatei einlesen und den aktuell eingelesenen Wert nach n_i speichern
+            daten.push_back(n_i); //den aktuell in n_i gespeicherten Wert dem Vektor hinzufügen
 
-    } //vorschleife beenden
+        } //vorschleife beenden
 
-    fin.close();  //Einlesedatei schließen
+        cout << prob(daten , mu) << endl; //Likelihood für mu im Terminal ausgeben
 
-    cout << prob(daten , mu) << endl; //Likelihood für mu im Terminal ausgeben
+
+        mu=0; //Variable zurücksetzen
+        
+        do{ //nachfolgende Befehle ausführen, so lange Bedingung erfüllt ist
+        
+            fout << mu << " " << prob(daten,mu) << endl;  //Wertepaare mu und L(mu) in Ausgabedatei schreiben
+            mu+=0.1;  //Schrittweite von mu festlegen
+
+        } while(mu<6);  //Bedingung festlegen, die zum ausführen der obigen Befehle erfüllt sein muss
     
+    fin.close();  //Einlesedatei schließen
+    fout.close(); //Ausgabedatei schließen
 
 } //Hauptprogramm beenden
 
