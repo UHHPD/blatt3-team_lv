@@ -33,6 +33,7 @@ int main() {  //Hauptprogramm starten
     
     ifstream fin("datensumme.txt"); //Einlesedatei festlegen
     ofstream fout("likelihood.txt");  //Ausgabedatei festlegen
+    ofstream fout2("nll.txt");  //weitere Ausgabedatei festlegen
 
         vector<int> daten(0); //Vektor mit 0 Einträgen defineiren
         int n_i;  //Variable definieren
@@ -51,13 +52,15 @@ int main() {  //Hauptprogramm starten
         
         do{ //nachfolgende Befehle ausführen, so lange Bedingung erfüllt ist
         
-            fout << mu << " " << prob(daten,mu) << endl;  //Wertepaare mu und L(mu) in Ausgabedatei schreiben
             mu+=0.1;  //Schrittweite von mu festlegen
+            fout << mu << " " << prob(daten,mu) << endl;  //Wertepaare mu und L(mu) in Ausgabedatei schreiben
+            fout2 << mu << " " << -2*log(prob(daten,mu)) << endl; //Wertepaare mu und -2ln L(mu)
 
         } while(mu<6);  //Bedingung festlegen, die zum ausführen der obigen Befehle erfüllt sein muss
     
     fin.close();  //Einlesedatei schließen
     fout.close(); //Ausgabedatei schließen
+    fout2.close();  //Ausgabedatei 2 schließen
 
 } //Hauptprogramm beenden
 
