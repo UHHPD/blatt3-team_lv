@@ -53,7 +53,7 @@ int main() {  //Hauptprogramm starten
     ifstream fin("datensumme.txt"); //Einlesedatei festlegen
     ofstream fout("likelihood.txt");  //Ausgabedatei festlegen
     ofstream fout2("nll.txt");  //weitere Ausgabedatei festlegen
-    ofstream fout3("deltall.txt");  //weitere Ausgabedatei festlegen
+    ofstream fout3("deltanll.txt");  //weitere Ausgabedatei festlegen
 
         vector<int> daten(0); //Vektor mit 0 Einträgen defineiren
         int n_i;  //Variable definieren
@@ -93,4 +93,5 @@ int main() {  //Hauptprogramm starten
 
 } //Hauptprogramm beenden
 
-//Bester Schätzwert für mu (gefunden über das Maximum) liegt bei mu=3,12
+//Schätzwert für mu liegt bei mu=3,12 
+//Fehler auf geschätzten Wert mu: +-0,05
