@@ -92,3 +92,5 @@ int main() {  //Hauptprogramm starten
     fout3.close();  //Ausgabedatei 3 schließen
 
 } //Hauptprogramm beenden
+
+//Bester Schätzwert für mu (gefunden über das Maximum) liegt bei mu=3,12
